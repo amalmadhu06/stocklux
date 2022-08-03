@@ -1,28 +1,18 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; //importing boostrap for styling
 
-import StockRow from "./components/StockRow.js";
+import StockList from "./components/StockList.js";
+import StockRow  from "./components/StockRow.js";
 
-function App() {
+function App() {  
   return (
     <div className="App">
       <div className="container">
-        <table className="table mt-5">
-          <thead>
-            <tr>
-              <th>Ticker</th>
-              <th>Price</th>
-              <th>Date</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <StockRow ticker="aapl" />
-            <StockRow ticker="msft" />
-            <StockRow ticker="goog" />
-            <StockRow ticker="tsla" />
-          </tbody>
-        </table>
+        <div className="col-md-5 mt-5">
+          <div className="card">
+            <StockList />
+          </div>
+        </div>
       </div>
     </div>
   );
