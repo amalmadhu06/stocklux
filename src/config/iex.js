@@ -1,4 +1,4 @@
 export const iex = {
-  api_token: "pk_bde29ee2624a4ca4a75507860fed5190",
+  api_token: "pk_8ef41bd59b8042dcb380eb34e0156875removethisforapitowork",
   base_url: "https://cloud.iexapis.com/stable",
 };
