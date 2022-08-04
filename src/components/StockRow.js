@@ -35,21 +35,38 @@ class StockRow extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    this.setCanRetrieveClose(prevProps);
 
-    if (prevProps.lastTradingDate == null) {
-      stock.getYesterdaysClose(this.props.ticker, this.props.lastTradingDate, (yesterday) => {
+    if (this.state.canRetrieveClose && this.state.price !== null) {
+      console.log("here");
+      stock.getYesterdaysClose(
+        this.props.ticker,
+        this.props.lastTradingDate,
+        (yesterday) => {
           const dollar_change = (this.state.price - yesterday.price).toFixed(2);
-          const percent_change = ((100 * dollar_change) /yesterday.price).toFixed(2);
+          const percent_change = (
+            (100 * dollar_change) /
+            yesterday.price
+          ).toFixed(2);
 
           this.setState({
             dollar_change: ` ${dollar_change}`,
             percent_change: ` (${percent_change}%)`,
+            canRetrieveClose: false,
           });
         }
       );
     }
   }
 
+  setCanRetrieveClose(prevProps) {
+    if (
+      prevProps.lastTradingDate == null &&
+      this.props.lastTradingDate != null
+    ) {
+      this.setState({ canRetrieveClose: true });
+    }
+  }
 
   render() {
     return (
