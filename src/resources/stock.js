@@ -30,7 +30,7 @@ export const stock = {
 
 
   getYesterdaysClose: (ticker, lastTradingDate, callback) => {
-      if (lastTradingDate != "" && lastTradingDate != undefined) {
+      if (lastTradingDate !== "" && lastTradingDate !== undefined) {
       const url = stock.yesterdaysCloseURL(ticker, stock.formatDate(lastTradingDate))
       fetch(url).then((response) => response.json()).then((data) => callback(stock.formatPriceData(data)));
     }
@@ -46,7 +46,7 @@ export const stock = {
 
   yesterdaysCloseURL: (ticker, lastTradingDate) => {
     // let lastTradingDate = stock.formatDate(date)
-    return `${iex.base_url}/stock/${ticker}/intraday-prices?chartLast=2&exactDate=${lastTradingDate}&token=${iex.api_token}`;
+    return `${iex.base_url}/stock/${ticker}/intraday-prices?chartLast=2&exactDate=${lastTradingDate-1}&token=${iex.api_token}`;
   },
 
   formatDate: (date) => {
