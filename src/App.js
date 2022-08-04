@@ -2,9 +2,11 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; //importing boostrap for styling
 
 import StockList from "./components/StockList.js";
-import StockRow  from "./components/StockRow.js";
+import Chart from "./chartTest/Chart.js";
 
-function App() {  
+// import StockRow   from "./components/StockRow.js";
+
+function App() {
   return (
     <div className="App">
       <div className="container">
@@ -13,6 +15,7 @@ function App() {
             <StockList />
           </div>
         </div>
+        <Chart />
       </div>
     </div>
   );
